@@ -15,7 +15,7 @@ public class DeviceController {
 
     @PostMapping("/ingest")
     public ResponseEntity<String> ingest(@RequestBody IoTMessage message) {
-        producer.send("iot-topic", message); // specify Kafka topic here
+        producer.send("iot-messages", message); // match consumer topic
         return ResponseEntity.accepted().body("accepted");
     }
 
