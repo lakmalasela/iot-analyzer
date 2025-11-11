@@ -1,11 +1,11 @@
 version: '3.8'
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.4.1
+    image: confluentinc/cp-zookeeper:latest
+    ports:
+      - "22181:2181"
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
-    ports:
-      - "2181:2181"
 
   kafka:
     image: confluentinc/cp-kafka:7.4.1
@@ -26,9 +26,9 @@ services:
   mongodb:
     image: mongo:6.0
     container_name: mongodb
-    command: [ "mongod", "--port", "27018" ]  # 👈 run MongoDB inside container on 27018
+    command: [ "mongod", "--port", "27018" ]
     ports:
-      - "27018:27018"                        # 👈 expose same port outside
+      - "27018:27018"
     volumes:
       - mongo-data:/data/db
 
